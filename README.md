@@ -27,7 +27,7 @@ Install the dependencies and devDependencies and start the server.
 $ git clone <Weather forecast git url> weather-forecast
 $ cd weather-forecast
 $ mvn clean install 
-$ Post success of build runt this ::-->  mvn tomcat7:run
+$ On success of clean build. Run this ::-->  mvn tomcat7:run
 $ Open web browser & hit the url: http://localhost:8080/weather-forecast/home?lang=en
 ```
 
