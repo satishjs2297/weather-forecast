@@ -1,17 +1,21 @@
 $(document).ready(function () {
-        	$("#errorDiv").hide();        	
+            $("#errorDiv").hide();  
+            $(".progress").hide();      	
             $("#get-report").click(function (event) {  
-            	event.preventDefault()
+                event.preventDefault()
         		var form = $("#weather-report-form")
         		var cities = $("#cities").val();
-        		if(!validateInput(cities)) {			
-        			$("#errorDiv").show();
+        		if(!validateInput(cities)) {
+                    $("#errorDiv").show();                   
         			return;
         		}
 
         		$("#errorDiv").hide();
-        		form.addClass('was-validated');               
+                form.addClass('was-validated');               
+                $(".progress").show(); 
+                makeProgress();                
                 $.get("/weather-forecast/getWeatherForecastByCities/"+cities, function(data, status){
+                    $(".progress").hide(); 
         		    if(status === 'success' && data.length > 0) {        			 
         				 createWidgets(data);
         		    } else {
@@ -68,4 +72,13 @@ $(document).ready(function () {
            } else {
           	 return false;
            }
+        }
+
+        var i = 0;
+        function makeProgress() {
+            if (i < 100) {
+                i = i + 1;
+                $(".progress-bar").css("width", i + "%").text(i + " %");
+            }
+            setTimeout("makeProgress()", 100);
         }
