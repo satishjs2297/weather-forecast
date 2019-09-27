@@ -9,7 +9,7 @@ Weather Forecast Display the weather information on the page.
 
 ### Technology Stack
 
-Weather Reporteruses a number of open source projects to work properly:
+Weather forecast built on following technology stacks:
 
 * Spring MVC - Spring MVC enabled Configuration!
 * jQuery - Used JQuery lib for Validation, Animation & Ajax Calls .
