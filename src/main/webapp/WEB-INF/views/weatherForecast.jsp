@@ -63,7 +63,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="report-widgets d-flex justify-content-center flex-wrap" >
+            <div class="weather-widgets d-flex justify-content-center flex-wrap" >
 
             </div>
         </div>

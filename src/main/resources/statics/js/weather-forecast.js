@@ -17,21 +17,22 @@ $(document).ready(function () {
                 $.get("/weather-forecast/getWeatherForecastByCities/"+cities, function(data, status){
                     $(".progress").hide(); 
         		    if(status === 'success' && data.length > 0) {        			 
-        				 createWidgets(data);
+        				 buildWeatherWidgets(data);
         		    } else {
-        		    	alert('No Data found for the city :: '+ cities);
+        		    	$("#errorDiv").show();
+        		    	$("#errorDiv").text('No Data found for the city :: '+ cities);
         		    }
           		});	                
                 return;               
             });
         });
 
-        function createWidgets(reports) {
-            $(".report-widgets").empty();
+        function buildWeatherWidgets(reports) {
+            $(".weather-widgets").empty();
             $(reports).each(function(index,report){
-                $(".report-widgets").append(createWidget(report));
+                $(".weather-widgets").append(buildChildWidget(report));
             });
-            $(".report-widgets").find(".report-widget").each(function(index, element){
+            $(".weather-widgets").find(".weather-widget").each(function(index, element){
                 $(element).delay((index + 1) * 200).animate(
                 		{ 
                             width: "100",
@@ -45,9 +46,9 @@ $(document).ready(function () {
             });
         }
 
-        function createWidget(report) {
+        function buildChildWidget(report) {
         	var report = JSON.parse(report);
-            $report_widget = $("<div />").addClass("report-widget").addClass("col-md-2");
+            $report_widget = $("<div />").addClass("weather-widget").addClass("col-md-2");
             $city = $("<div />").addClass("city").text(report.name);
             $data_holder = $("<div />").addClass("data-holder");
             $primary_data_holder = $("<div />").addClass("primary-data-holder");

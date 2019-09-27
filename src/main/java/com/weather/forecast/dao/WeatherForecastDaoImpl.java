@@ -1,6 +1,7 @@
 package com.weather.forecast.dao;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
@@ -27,14 +28,19 @@ public class WeatherForecastDaoImpl implements WeatherForecastDao {
 
 	@Override
 	public List<String> getWeatherForecastByCities(List<String> cities) {
-		List<String> weathers = cities.parallelStream().map(this::getOpenWeatherForecast)
+		List<String> weathers = cities.parallelStream().map(this::getOpenWeatherForecast).filter(Objects::nonNull)
 				.collect(Collectors.toList());
 		LOG.info("weathers :: {}", weathers);
 		return weathers;
 	}
 
 	private String getOpenWeatherForecast(String city) {
-		return restTemplate.getForObject(openWeatherMapUrl.concat(city.trim()), String.class);
+		try {
+			return restTemplate.getForObject(openWeatherMapUrl.concat(city.trim()), String.class);
+		} catch (Exception e) {
+			LOG.error("Failed to get WeatherForecast report:: {}", e.getMessage());
+		}
+		return null;
 	}
 
 }

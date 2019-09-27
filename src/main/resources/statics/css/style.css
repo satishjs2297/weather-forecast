@@ -1,35 +1,35 @@
-.report-widgets {
+.weather-widgets {
 	margin: 20px auto;
 }
 
-.report-widget {
+.weather-widget {
 	border: 1px #eee solid;
-	border-radius: 10px;
+	border-radius: 25px;
 	margin: 5px;
-	padding: 5px;
+	padding: 10px;
 	box-shadow: 5px 8px 8px #888888;
 	opacity: 0;
 }
 
-.report-widget .city {
+.weather-widget .city {
 	font-size: medium;
 	font-weight: bold;
 	text-align: center;
 }
 
-.report-widget .data-holder {
+.weather-widget .data-holder {
 	width: 130px;
 }
 
-.report-widget .primary-data-holder {
+.weather-widget .primary-data-holder {
 	
 }
 
-.report-widget .primary-data-holder .data {
+.weather-widget .primary-data-holder .data {
 	
 }
 
-.report-widget .primary-data-holder .data .temperature {
+.weather-widget .primary-data-holder .data .temperature {
 	font-size: medium;
 	font-weight: bold;
 	padding: 0pt 3pt;
@@ -40,24 +40,24 @@
 	background-size: 100px;
 }
 
-.report-widget .clouds {
+.weather-widget .clouds {
 	font-size: small;
 	text-align: center;
 }
 
-.report-widget .humidity {
+.weather-widget .humidity {
 	color: gray;
 	font-size: x-small;
 	text-align: center;
 }
 
-.report-widget .wind {
+.weather-widget .wind {
 	color: gray;
 	font-size: x-small;
 	text-align: center;
 }
 
-.report-widget .pressure {
+.weather-widget .pressure {
 	color: gray;
 	font-size: x-small;
 	text-align: center;
