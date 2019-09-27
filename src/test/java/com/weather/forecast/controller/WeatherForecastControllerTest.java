@@ -11,8 +11,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import com.weather.forecast.controller.WeatherForecastController;
-import com.weather.forecast.model.WeatherReport;
 import com.weather.forecast.service.WeatherForecastService;
 
 public class WeatherForecastControllerTest {
@@ -38,8 +36,9 @@ public class WeatherForecastControllerTest {
 	@Test
 	public void testGetWeathersByCities() {
 		Mockito.when(weatherReportServiceMock.getWeatherForecastByCities(Mockito.any(List.class)))
-				.thenReturn(Collections.singletonList(new WeatherReport()));
-		List<WeatherReport> weathersByCities = weatherForecastController.getWeatherForecastByCities(Collections.emptyList());
+				.thenReturn(Collections.singletonList("{test:value}"));
+		List<String> weathersByCities = weatherForecastController.getWeatherForecastByCities(Collections.emptyList())
+				.getBody();
 		Assert.assertNotNull(weathersByCities);
 	}
 

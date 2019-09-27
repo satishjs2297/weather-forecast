@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.weather.forecast.dao.WeatherForecastDao;
-import com.weather.forecast.model.WeatherReport;
 
 @Service
 public class WeatherForecastServiceImpl implements WeatherForecastService {
@@ -23,10 +22,10 @@ public class WeatherForecastServiceImpl implements WeatherForecastService {
 	}
 
 	@Override
-	public List<WeatherReport> getWeatherForecastByCities(List<String> cities) {
+	public List<String> getWeatherForecastByCities(List<String> cities) {
 		long strTime = System.currentTimeMillis();
 		LOG.info("cities :: {}", cities);
-		List<WeatherReport> reports = weatherForecastDao.getWeatherForecastByCities(cities);
+		List<String> reports = weatherForecastDao.getWeatherForecastByCities(cities);
 		LOG.info("Forecast Report Size :: {} :: TT :: {}", reports.size(), (System.currentTimeMillis() - strTime));
 		return reports;
 	}

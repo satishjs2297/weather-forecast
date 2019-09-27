@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
-import com.weather.forecast.model.WeatherReport;
-
 @Repository
 public class WeatherForecastDaoImpl implements WeatherForecastDao {
 
@@ -28,15 +26,15 @@ public class WeatherForecastDaoImpl implements WeatherForecastDao {
 	}
 
 	@Override
-	public List<WeatherReport> getWeatherForecastByCities(List<String> cities) {
-		List<WeatherReport> weathers = cities.parallelStream().map(this::getOpenWeatherForecast)
+	public List<String> getWeatherForecastByCities(List<String> cities) {
+		List<String> weathers = cities.parallelStream().map(this::getOpenWeatherForecast)
 				.collect(Collectors.toList());
 		LOG.info("weathers :: {}", weathers);
 		return weathers;
 	}
 
-	private WeatherReport getOpenWeatherForecast(String city) {
-		return restTemplate.getForObject(openWeatherMapUrl.concat(city.trim()), WeatherReport.class);
+	private String getOpenWeatherForecast(String city) {
+		return restTemplate.getForObject(openWeatherMapUrl.concat(city.trim()), String.class);
 	}
 
 }

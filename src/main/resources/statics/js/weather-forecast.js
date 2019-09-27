@@ -42,6 +42,7 @@ $(document).ready(function () {
         }
 
         function createWidget(report) {
+        	var report = JSON.parse(report);
             $report_widget = $("<div />").addClass("report-widget").addClass("col-md-2");
             $city = $("<div />").addClass("city").text(report.name);
             $data_holder = $("<div />").addClass("data-holder");

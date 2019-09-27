@@ -13,8 +13,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.client.RestTemplate;
 
-import com.weather.forecast.model.WeatherReport;
-
 public class WeatherForecastDaoTest {
 
 	@Mock
@@ -32,9 +30,9 @@ public class WeatherForecastDaoTest {
 	@Test
 	public void testgetWeatherForecastByCities() {
 
-		Mockito.when(restTemplateMock.getForObject(Mockito.any(String.class), Mockito.eq(WeatherReport.class)))
-				.thenReturn(new WeatherReport());
-		List<WeatherReport> weatherReportsByCities = weatherForecastDao
+		Mockito.when(restTemplateMock.getForObject(Mockito.any(String.class), Mockito.eq(String.class)))
+				.thenReturn("{code:123, temp:400}");
+		List<String> weatherReportsByCities = weatherForecastDao
 				.getWeatherForecastByCities(Arrays.asList("USA", "London"));
 		Assert.assertNotNull(weatherReportsByCities);
 		Assert.assertEquals(2, weatherReportsByCities.size());
