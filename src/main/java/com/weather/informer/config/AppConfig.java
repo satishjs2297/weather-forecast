@@ -1,15 +1,12 @@
 package com.weather.informer.config;
 
-import java.util.Locale;
-import java.util.TimeZone;
-
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 @Configuration
@@ -41,10 +38,8 @@ public class AppConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 	}
 
 	@Bean
-	public LocaleResolver sessionLocaleResolver() {
-		SessionLocaleResolver localeResolver = new SessionLocaleResolver(); 
-	    localeResolver.setDefaultLocale(Locale.US); 
-	    localeResolver.setDefaultTimeZone(TimeZone.getTimeZone("UTC"));
-	    return localeResolver; 
+	public LocaleResolver localeResolver() {
+		CookieLocaleResolver localeResolver = new CookieLocaleResolver();
+		return localeResolver;
 	}
 }
