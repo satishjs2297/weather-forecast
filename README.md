@@ -35,12 +35,15 @@ $ Open web browser & hit the url: http://localhost:8080/weather/?lang=en
 - Spring Web MVC
 - Jsp
 
+## Weather informer Sequence Flow
+
+![Weather Informer Flow](docs/weather-informer-squenceflow.png)
+
 ## Running the tests
 ```
 $ cd <path/to/weather-informer>
 $ mvn test -e
 ```
-
 ## Authors
 
 *  Swami
