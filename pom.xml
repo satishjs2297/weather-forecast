@@ -2,12 +2,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.weather.forecast</groupId>
-	<artifactId>weather-forecast</artifactId>
+	<groupId>com.weather.informer</groupId>
+	<artifactId>weather-informer-web</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
-	<name>weather-forecast</name>
-	<description>Weather forecast Project to Share Weather Details to End User.</description>
+	<name>weather-informer</name>
+	<description>Weather informer Project connects to OpenWheater service and gets the weather information.</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -36,20 +36,14 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
-
-		<!-- Dependency to Enable Http SSL Client -->
+		<!-- Http SSL Client -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.5.9</version>
 		</dependency>
 
-		<!-- Log4j 2 Dependency -->
+		<!-- Log4j 2  -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
@@ -61,6 +55,7 @@
 			<version>2.12.1</version>
 		</dependency>
 
+		<!-- Jackson binding -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
@@ -98,17 +93,19 @@
 	</dependencies>
 	<build>
 		<plugins>
-			<!-- Embedded Tomcat HTTP Server for testing war application -->
+			<!-- Embedded Jetty HTTP Server for testing war application -->
 			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.2</version>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.4.8.v20171121</version>
 				<configuration>
-					<path>/weather-forecast</path>
+					<scanIntervalSeconds>30</scanIntervalSeconds>
+					<webApp>
+						<contextPath>/weather</contextPath>
+					</webApp>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>

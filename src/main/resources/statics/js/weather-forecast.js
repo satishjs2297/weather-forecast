@@ -14,7 +14,7 @@ $(document).ready(function () {
                 form.addClass('was-validated');               
                 $(".progress").show(); 
                 makeProgress();                
-                $.get("/weather-forecast/getWeatherForecastByCities/"+cities, function(data, status){
+                $.get("/weather/getWeatherInfoByCities/"+cities, function(data, status){
                     $(".progress").hide(); 
         		    if(status === 'success' && data.length > 0) {        			 
         				 buildWeatherWidgets(data);
